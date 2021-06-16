@@ -1,0 +1,78 @@
+﻿
+@{
+    //ViewData["Title"] = "Show";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/layui-v2.6.8/layui/css/layui.css" rel="stylesheet" />
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+
+        <div class="layui-row">
+            <div class="layui-col-xs6">
+                <div class="grid-demo grid-demo-bg1">
+                    <!--树-->
+                    <div id="test1" class="demo-tree demo-tree-box"></div>
+                </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="grid-demo">
+                <!--内容-->
+                    <label>当前时间：@DateTime.Now.ToString("yyyy年MM月dd日")</label><label>[@DateTime.Now.DayOfWeek.ToString()]</label>
+                    <br />
+                    <input id="Button1" type="button" value="签到" />
+                    <br />
+                    <input id="Button1" type="button" value="签退" />
+                </div>
+            </div>
+        </div>
+
+    
+
+    <script src="~/layui-v2.6.8/layui/layui.js"></script>
+    <script>
+        layui.use(['tree', 'util'], function () {
+            var tree = layui.tree
+                , layer = layui.layer
+                , util = layui.util
+            //模拟数据1
+            var data1 = [{
+                title: '首页'
+                , id: 1
+            }, {
+                title: '考勤管理'
+                , id: 2
+                , children: [{
+                    title: '打卡'
+                    , id: 2000
+                }, {
+                    title: '我的考勤'
+                    , id: 2001
+                }, {
+                    title: '请假记录'
+                    , id: 2002
+                }, {
+                    title: '加班记录'
+                    , id: 2003
+                }, {
+                    title: '外出登记'
+                    , id: 2004
+                }]
+            }];
+            //常规用法
+            tree.render({
+                elem: '#test1' //默认是点击节点可进行收缩
+                , data: data1
+            });
+        });
+    </script>
+</body>
+</html>
